@@ -6,6 +6,7 @@ import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { router } from './router/index';
+import { MONGODB_URI } from 'consts';
 
 const PORT = 8080;
 const app = express();
@@ -23,8 +24,7 @@ server.listen(PORT,()=>{
 	console.log(`server listening on ${PORT}`)
 });
 
-const MONGO_URL = 'mongodb+srv://admin:admin@cluster0.etnd4ed.mongodb.net/';
-mongoose.connect(MONGO_URL);
+mongoose.connect(MONGODB_URI);
 mongoose.connection.on('error', ()=>{
 	console.log("connection error");
 })
